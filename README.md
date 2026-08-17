@@ -6,9 +6,6 @@ The application helps students get information about college courses, duration, 
 
 ---
 
-
----
-
 ## 🚀 Features
 
 - 🏠 Modern College Home Page
@@ -53,6 +50,32 @@ The application helps students get information about college courses, duration, 
 
 ---
 
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+
+![Home Page](screenshots/Home.png)
+
+---
+
+### 📚 Courses Page
+
+![Courses Page](screenshots/Courses.png)
+
+---
+
+### 🤖 College Chatbot
+
+![College Chatbot](screenshots/Chatbot.png)
+
+---
+
+### 🔐 Admin Dashboard
+
+![Admin Dashboard](screenshots/Admin%20Dashboard.png)
+
+---
+
 ## 📂 Project Structure
 
 ```text
@@ -64,10 +87,10 @@ College-Enquiry-Chatbot/
 ├── README.md
 │
 ├── screenshots/
-│   ├── home.png
-│   ├── courses.png
-│   ├── chatbot.png
-│   └── admin-dashboard.png
+│   ├── Home.png
+│   ├── Courses.png
+│   ├── Chatbot.png
+│   └── Admin Dashboard.png
 │
 └── templates/
     ├── index.html
