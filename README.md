@@ -6,6 +6,32 @@ The application helps students get information about college courses, duration, 
 
 ---
 
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+
+![Home Page](/home.png)
+
+---
+
+### 📚 Courses Page
+
+![Courses Page](/courses.png)
+
+---
+
+### 🤖 College Chatbot
+
+![College Chatbot](/chatbot.png)
+
+---
+
+### 🔐 Admin Dashboard
+
+![Admin Dashboard](/admin-dashboard.png)
+
+---
+
 ## 🚀 Features
 
 - 🏠 Modern College Home Page
@@ -29,18 +55,22 @@ The application helps students get information about college courses, duration, 
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - HTML5
 - CSS3
 - Jinja2 Templates
 
 ### Backend
+
 - Python
 - Flask
 
 ### Database
+
 - SQLite
 
 ### Security
+
 - Werkzeug Password Hashing
 - Flask Sessions
 
@@ -55,6 +85,12 @@ College-Enquiry-Chatbot/
 ├── database.py
 ├── .gitignore
 ├── README.md
+│
+├── screenshots/
+│   ├── home.png
+│   ├── courses.png
+│   ├── chatbot.png
+│   └── admin-dashboard.png
 │
 └── templates/
     ├── index.html
