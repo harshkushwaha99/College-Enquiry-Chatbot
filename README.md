@@ -6,29 +6,6 @@ The application helps students get information about college courses, duration, 
 
 ---
 
-## 📸 Project Screenshots
-
-### 🏠 Home Page
-
-![Home Page](/home.png)
-
----
-
-### 📚 Courses Page
-
-![Courses Page](/courses.png)
-
----
-
-### 🤖 College Chatbot
-
-![College Chatbot](/chatbot.png)
-
----
-
-### 🔐 Admin Dashboard
-
-![Admin Dashboard](/admin-dashboard.png)
 
 ---
 
