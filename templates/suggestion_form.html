@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Give Suggestion - College Enquiry</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5fc;
+            min-height: 100vh;
+            color: #183b70;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 80px;
+            background: #173f78;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .welcome {
+            color: #ffd15c;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #ffd15c;
+            color: #173f78 !important;
+
+            padding: 11px 22px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 70%;
+            max-width: 900px;
+
+            margin: 70px auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading h1 {
+            color: #1d477d;
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .heading p {
+            color: #66758a;
+            font-size: 17px;
+        }
+
+        /* CARD */
+
+        .suggestion-card {
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            background: #edf3ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+        }
+
+        label {
+            display: block;
+
+            color: #1d477d;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+
+            min-height: 180px;
+
+            padding: 15px;
+
+            border: 1px solid #d5ddeb;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            resize: vertical;
+
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2867e8;
+
+            box-shadow: 0 0 0 3px rgba(40, 103, 232, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #2867e8;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #1d55d0;
+        }
+
+        .back-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #2867e8;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 700px) {
+
+            .container {
+                width: 92%;
+            }
+
+            .suggestion-card {
+                padding: 25px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            🎓 College Enquiry
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/courses">
+                Courses
+            </a>
+
+            {% if user %}
+
+                <span class="welcome">
+                    👋 {{ user }}
+                </span>
+
+                <a href="/logout" class="logout-btn">
+                    Logout
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <div class="heading">
+
+            <h1>
+                💬 Give Your Suggestion
+            </h1>
+
+            <p>
+                Help us improve the College Enquiry system.
+            </p>
+
+        </div>
+
+
+        <div class="suggestion-card">
+
+            <div class="icon">
+                💡
+            </div>
+
+
+            <form action="/suggestion" method="POST">
+
+                <label for="message">
+                    Your Suggestion
+                </label>
+
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your suggestion here..."
+                    required></textarea>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Submit Suggestion
+
+                </button>
+
+            </form>
+
+
+            <a href="/" class="back-link">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Messages - Admin</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5fc;
+            min-height: 100vh;
+            color: #183b70;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            min-height: 75px;
+
+            background: #1d477d;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-name {
+            color: #ffd35c;
+            font-weight: bold;
+        }
+
+        .dashboard-btn,
+        .logout-btn {
+            padding: 10px 18px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .dashboard-btn {
+            background: white;
+            color: #1d477d;
+        }
+
+        .logout-btn {
+            background: #ffd35c;
+            color: #173f73;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 40px auto;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            color: #1d477d;
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #666;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+
+            overflow-x: auto;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 800px;
+        }
+
+        th {
+            background: #1d477d;
+
+            color: white;
+
+            padding: 15px;
+
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+
+            border-bottom: 1px solid #e5e8ef;
+
+            color: #555;
+
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: #f8faff;
+        }
+
+        .message {
+            max-width: 400px;
+
+            line-height: 1.6;
+        }
+
+        /* DELETE */
+
+        .delete-btn {
+            border: none;
+
+            background: #dc3545;
+
+            color: white;
+
+            padding: 9px 15px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .delete-btn:hover {
+            background: #b02a37;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            text-align: center;
+
+            padding: 50px;
+
+            color: #777;
+
+            font-size: 17px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-right {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+
+        <div class="logo">
+
+            📩 Contact Messages
+
+        </div>
+
+
+        <div class="nav-right">
+
+
+            <span class="admin-name">
+
+                👋 {{ session["admin_username"] }}
+
+            </span>
+
+
+            <a
+                href="/admin/dashboard"
+                class="dashboard-btn">
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="/admin/logout"
+                class="logout-btn">
+
+                Logout
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <h1>
+                📩 Contact Messages
+            </h1>
+
+            <p>
+                View messages submitted through the Contact Us form.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+
+            {% if messages %}
+
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Message
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        {% for message in messages %}
+
+
+                            <tr>
+
+                                <td>
+                                    {{ message["id"] }}
+                                </td>
+
+
+                                <td>
+                                    {{ message["name"] }}
+                                </td>
+
+
+                                <td>
+                                    {{ message["email"] }}
+                                </td>
+
+
+                                <td class="message">
+                                    {{ message["message"] }}
+                                </td>
+
+
+                                <td>
+
+                                    <form
+                                        action="/admin/messages/delete/{{ message['id'] }}"
+                                        method="POST"
+                                        onsubmit="return confirm('Delete this message?');">
+
+                                        <button
+                                            type="submit"
+                                            class="delete-btn">
+
+                                            Delete
+
+                                        </button>
+
+                                    </form>
+
+                                </td>
+
+                            </tr>
+
+
+                        {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+
+
+            {% else %}
+
+
+                <div class="empty">
+
+                    📭 अभी कोई contact message प्राप्त नहीं हुआ है।
+
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

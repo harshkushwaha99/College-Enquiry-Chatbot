@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About | College Enquiry</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f8ff;
+            color: #183b70;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            min-height: 78px;
+
+            background: #173f78;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            color: white;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #ffd15c;
+        }
+
+        .login-btn,
+        .logout-btn {
+            background: #ffd15c;
+            color: #173f78 !important;
+
+            padding: 11px 20px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+        }
+
+        .welcome {
+            color: #ffd15c;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+
+            margin: 55px auto;
+        }
+
+        .hero-about {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 50px;
+
+            box-shadow:
+                0 15px 40px rgba(31,63,120,0.10);
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-icon {
+            width: 100px;
+            height: 100px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: #edf3ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 50px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-about h1 {
+            color: #183b70;
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .blue {
+            color: #2867e8;
+        }
+
+        .hero-about p {
+            max-width: 800px;
+
+            margin: auto;
+
+            color: #66758b;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .section-title {
+            text-align: center;
+
+            margin: 45px 0 25px;
+        }
+
+        .section-title h2 {
+            color: #183b70;
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #66758b;
+        }
+
+        .features {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .feature-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 17px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #183b70;
+
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #66758b;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            background: #173f78;
+
+            color: white;
+
+            padding: 45px 30px;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            margin-top: 45px;
+        }
+
+        .cta h2 {
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #d8e2f2;
+
+            margin-bottom: 25px;
+
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            display: inline-block;
+
+            background: #ffd15c;
+
+            color: #173f78;
+
+            padding: 13px 25px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .cta-btn:hover {
+            background: #ffca32;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #173f78;
+
+            color: white;
+
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            width: 86%;
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 45px 0 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr 1.2fr;
+
+            gap: 35px;
+        }
+
+        .footer-section h2 {
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        .footer-section h3 {
+            color: #ffd15c;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-section p {
+            color: #d8e2f2;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 7px;
+        }
+
+        .footer-section a {
+            display: block;
+
+            color: #d8e2f2;
+
+            text-decoration: none;
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+        }
+
+        .footer-section a:hover {
+            color: #ffd15c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.15);
+
+            text-align: center;
+
+            padding: 17px;
+        }
+
+        .footer-bottom p {
+            color: #cbd7e8;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+
+                padding: 18px 20px;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px;
+            }
+
+            .hero-about {
+                padding: 35px 25px;
+            }
+
+            .hero-about h1 {
+                font-size: 34px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .container {
+                width: 92%;
+            }
+
+            .hero-about h1 {
+                font-size: 29px;
+            }
+
+            .hero-about p {
+                font-size: 16px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            🎓 College Enquiry
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/about">
+                About
+            </a>
+
+            <a href="/courses">
+                Courses
+            </a>
+
+            <a href="/contact">
+                Contact
+            </a>
+
+
+            {% if session.get("admin_id") %}
+
+                <span class="welcome">
+                    👋 {{ session["admin_username"] }}
+                </span>
+
+                <a
+                    href="/admin/dashboard"
+                    class="login-btn">
+
+                    Dashboard
+
+                </a>
+
+                <a
+                    href="/admin/logout"
+                    class="logout-btn">
+
+                    Logout
+
+                </a>
+
+
+            {% elif user %}
+
+                <span class="welcome">
+                    👋 {{ user }}
+                </span>
+
+                <a
+                    href="/logout"
+                    class="logout-btn">
+
+                    Logout
+
+                </a>
+
+
+            {% else %}
+
+                <a
+                    href="/login"
+                    class="login-btn">
+
+                    Login
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <main class="container">
+
+
+        <section class="hero-about">
+
+            <div class="hero-icon">
+                🎓
+            </div>
+
+            <h1>
+                About <span class="blue">College Enquiry</span>
+            </h1>
+
+            <p>
+                College Enquiry is a smart college information
+                platform designed to help students quickly find
+                information about courses, fees, admissions,
+                facilities and other college-related queries.
+            </p>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <div class="section-title">
+
+            <h2>
+                What Our Platform Provides
+            </h2>
+
+            <p>
+                Everything students need in one place.
+            </p>
+
+        </div>
+
+
+        <section class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Smart Chatbot
+                </h3>
+
+                <p>
+                    Ask questions related to college information
+                    and get quick answers through the chatbot.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Course Information
+                </h3>
+
+                <p>
+                    Explore available courses, duration, fees
+                    and other course-related information.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    💬
+                </div>
+
+                <h3>
+                    Student Support
+                </h3>
+
+                <p>
+                    Students can submit suggestions and contact
+                    the college through the platform.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <h2>
+                Have a College Question?
+            </h2>
+
+            <p>
+                Use our smart assistant to get information quickly.
+            </p>
+
+            <a
+                href="/chat"
+                class="cta-btn">
+
+                🤖 Chat With Assistant
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+
+            <div class="footer-section">
+
+                <h2>
+                    🎓 College Enquiry
+                </h2>
+
+                <p>
+                    Your smart college enquiry assistant for
+                    courses, admissions, fees and college information.
+                </p>
+
+            </div>
+
+
+            <div class="footer-section">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/about">
+                    About
+                </a>
+
+                <a href="/courses">
+                    Courses
+                </a>
+
+                <a href="/contact">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="footer-section">
+
+                <h3>
+                    Student Support
+                </h3>
+
+                <a href="/chat">
+                    🤖 Chat Assistant
+                </a>
+
+                <a href="/suggestion">
+                    💬 Give Suggestion
+                </a>
+
+                <a href="/contact">
+                    📩 Contact Us
+                </a>
+
+            </div>
+
+
+            <div class="footer-section">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📍 Bhopal, Madhya Pradesh
+                </p>
+
+                <p>
+                    📞 +91 98765 43210
+                </p>
+
+                <p>
+                    📧 info@collegeenquiry.com
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 College Enquiry. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

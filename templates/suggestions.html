@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Suggestions - College Enquiry</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5fc;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 75px;
+            background: #1d477d;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .dashboard-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #ffd35c;
+            color: #173f73;
+
+            padding: 11px 22px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: #ffca28;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 86%;
+            margin: 40px auto;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            color: #1d477d;
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* SUGGESTION LIST */
+
+        .suggestion-section {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .suggestion-section h2 {
+            color: #1d477d;
+
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #1d477d;
+
+            color: white;
+
+            padding: 15px;
+
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+
+            border-bottom: 1px solid #ddd;
+
+            color: #444;
+
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: #f8faff;
+        }
+
+        .student-name {
+            font-weight: bold;
+
+            color: #1d477d;
+        }
+
+        .student-email {
+            color: #555;
+        }
+
+        .message {
+            line-height: 1.6;
+
+            max-width: 500px;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+
+            color: white;
+
+            border: none;
+
+            padding: 9px 15px;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .empty-message {
+            text-align: center;
+
+            padding: 40px;
+
+            color: #777;
+
+            font-size: 16px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================= -->
+    <!-- NAVBAR -->
+    <!-- ========================= -->
+
+    <div class="navbar">
+
+
+        <div class="logo">
+
+            🎓 College Enquiry Admin
+
+        </div>
+
+
+        <div class="navbar-right">
+
+
+            <a
+                href="/admin/dashboard"
+                class="dashboard-btn">
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="/admin/logout"
+                class="logout-btn">
+
+                Logout
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- MAIN -->
+    <!-- ========================= -->
+
+    <div class="container">
+
+
+        <!-- HEADING -->
+
+        <div class="heading">
+
+            <h1>
+                💬 Student Suggestions
+            </h1>
+
+            <p>
+                View suggestions submitted by students.
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- SUGGESTIONS -->
+        <!-- ========================= -->
+
+        <div class="suggestion-section">
+
+
+            <h2>
+                📋 All Suggestions
+            </h2>
+
+
+            <div class="table-container">
+
+
+                {% if suggestions %}
+
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Student Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Suggestion
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        {% for suggestion in suggestions %}
+
+
+                        <tr>
+
+
+                            <td>
+                                {{ suggestion["id"] }}
+                            </td>
+
+
+                            <td class="student-name">
+
+                                {{ suggestion["user_name"] }}
+
+                            </td>
+
+
+                            <td class="student-email">
+
+                                {{ suggestion["user_email"] }}
+
+                            </td>
+
+
+                            <td class="message">
+
+                                {{ suggestion["message"] }}
+
+                            </td>
+
+
+                            <td>
+
+
+                                <form
+                                    action="/admin/suggestions/delete/{{ suggestion['id'] }}"
+                                    method="POST">
+
+
+                                    <button
+                                        type="submit"
+                                        class="delete-btn"
+                                        onclick="return confirm('Are you sure you want to delete this suggestion?');">
+
+                                        Delete
+
+                                    </button>
+
+
+                                </form>
+
+
+                            </td>
+
+
+                        </tr>
+
+
+                        {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+
+
+                {% else %}
+
+
+                <div class="empty-message">
+
+                    💬 अभी कोई suggestion प्राप्त नहीं हुई है।
+
+                </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

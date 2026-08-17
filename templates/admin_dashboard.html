@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - College Enquiry</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5fc;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            min-height: 75px;
+
+            background: #1d477d;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .admin-name {
+            margin-right: 20px;
+
+            color: #ffd35c;
+
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #ffd35c;
+
+            color: #173f73;
+
+            padding: 11px 22px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            width: 86%;
+
+            margin: 40px auto;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            color: #1d477d;
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #666;
+
+            font-size: 16px;
+        }
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 42px;
+
+            margin-bottom: 12px;
+        }
+
+        .card h2 {
+            font-size: 32px;
+
+            color: #2864e8;
+
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #555;
+
+            font-size: 16px;
+        }
+
+        /* =========================
+           MANAGEMENT
+        ========================= */
+
+        .management {
+            margin-top: 40px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        .management-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .management-card h2 {
+            color: #1d477d;
+
+            margin-bottom: 10px;
+        }
+
+        .management-card p {
+            color: #666;
+
+            margin-bottom: 20px;
+
+            line-height: 1.5;
+        }
+
+        .manage-btn {
+            display: inline-block;
+
+            background: #2864e8;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 20px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+        }
+
+        .manage-btn:hover {
+            background: #1d55d0;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .cards {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+        @media (max-width: 900px) {
+
+            .cards {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .management {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .admin-name {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <div class="navbar">
+
+
+        <div class="logo">
+
+            🎓 College Enquiry Admin
+
+        </div>
+
+
+        <div>
+
+            <span class="admin-name">
+
+                👋 {{ session["admin_username"] }}
+
+            </span>
+
+
+            <a
+                href="/admin/logout"
+                class="logout-btn">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+            <p>
+                Welcome to College Enquiry Administration Panel.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================= -->
+
+        <div class="cards">
+
+
+            <!-- USERS -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    👨‍🎓
+                </div>
+
+                <h2>
+                    {{ total_users }}
+                </h2>
+
+                <p>
+                    Registered Students
+                </p>
+
+            </div>
+
+
+            <!-- COURSES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+                <h2>
+                    {{ total_courses }}
+                </h2>
+
+                <p>
+                    Total Courses
+                </p>
+
+            </div>
+
+
+            <!-- CHATBOT -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🤖
+                </div>
+
+                <h2>
+                    {{ total_questions }}
+                </h2>
+
+                <p>
+                    Chatbot Questions
+                </p>
+
+            </div>
+
+
+            <!-- SUGGESTIONS -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💬
+                </div>
+
+                <h2>
+                    {{ total_suggestions }}
+                </h2>
+
+                <p>
+                    Student Suggestions
+                </p>
+
+            </div>
+
+
+            <!-- CONTACT MESSAGES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📩
+                </div>
+
+                <h2>
+                    {{ total_messages }}
+                </h2>
+
+                <p>
+                    Contact Messages
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             MANAGEMENT
+        ========================= -->
+
+        <div class="management">
+
+
+            <!-- STUDENTS -->
+
+            <div class="management-card">
+
+                <h2>
+                    👨‍🎓 Manage Students
+                </h2>
+
+                <p>
+                    View registered students and their information.
+                </p>
+
+                <a
+                    href="/admin/students"
+                    class="manage-btn">
+
+                    View Students
+
+                </a>
+
+            </div>
+
+
+            <!-- COURSES -->
+
+            <div class="management-card">
+
+                <h2>
+                    📚 Manage Courses
+                </h2>
+
+                <p>
+                    Add and manage college courses.
+                </p>
+
+                <a
+                    href="/admin/courses"
+                    class="manage-btn">
+
+                    Manage Courses
+
+                </a>
+
+            </div>
+
+
+            <!-- CHATBOT -->
+
+            <div class="management-card">
+
+                <h2>
+                    🤖 Chatbot Data
+                </h2>
+
+                <p>
+                    Manage chatbot questions and answers.
+                </p>
+
+                <a
+                    href="/admin/chatbot"
+                    class="manage-btn">
+
+                    Manage Chatbot
+
+                </a>
+
+            </div>
+
+
+            <!-- SUGGESTIONS -->
+
+            <div class="management-card">
+
+                <h2>
+                    💬 Student Suggestions
+                </h2>
+
+                <p>
+                    View suggestions submitted by students.
+                </p>
+
+                <a
+                    href="/admin/suggestions"
+                    class="manage-btn">
+
+                    View Suggestions
+
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT MESSAGES -->
+
+            <div class="management-card">
+
+                <h2>
+                    📩 Contact Messages
+                </h2>
+
+                <p>
+                    View messages submitted through the Contact Us form.
+                </p>
+
+                <a
+                    href="/admin/messages"
+                    class="manage-btn">
+
+                    View Messages
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
